@@ -12,18 +12,13 @@ const cssFile = path.join(dir, 'index.css');
 const htmlFile = path.join(dir, 'index.html');
 
 function renderCss() {
-  let content = [];
-
-  Object.keys(patterns).forEach((name, index) => {
-    content.push(
-`.pattern-${index} {
-  background-pattern: "${name}";
+  const content = patterns.map((pattern, index) => {
+    return `
+.pattern-${index} {
+  background-pattern: "${pattern.name}";
 }
-`
-    );
-  });
-
-  content = content.join('');
+`;
+  }).join('');
 
   fs.writeFile(postcssFile, content);
 
@@ -37,7 +32,7 @@ function renderCss() {
 
 function renderHtml() {
   const content = pug.renderFile(path.join(__dirname, './template.pug'), {
-    patterns: Object.keys(patterns).length
+    patterns: patterns
   });
 
   fs.writeFile(htmlFile, content, err => {

@@ -20,7 +20,9 @@ var plugin = _postcss2.default.plugin(pluginName, function () {
     return function (css) {
         css.walkDecls('background-pattern', function (decl) {
             var patternName = decl.value.replace(/[\"\']/g, '');
-            var pattern = _data__2.default[patternName];
+            var pattern = _data__2.default.reduce(function (acc, curr) {
+                return curr.name === patternName ? curr : acc;
+            });
             if (typeof pattern !== 'undefined') {
                 var origRule = decl.parent;
                 origRule.append(pattern.css);

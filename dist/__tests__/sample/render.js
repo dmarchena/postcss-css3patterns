@@ -36,13 +36,9 @@ var cssFile = _path2.default.join(dir, 'index.css');
 var htmlFile = _path2.default.join(dir, 'index.html');
 
 function renderCss() {
-  var content = [];
-
-  Object.keys(_data__2.default).forEach(function (name, index) {
-    content.push('.pattern-' + index + ' {\n  background-pattern: "' + name + '";\n}\n');
-  });
-
-  content = content.join('');
+  var content = _data__2.default.map(function (pattern, index) {
+    return '\n.pattern-' + index + ' {\n  background-pattern: "' + pattern.name + '";\n}\n';
+  }).join('');
 
   _fs2.default.writeFile(postcssFile, content);
 
@@ -55,7 +51,7 @@ function renderCss() {
 
 function renderHtml() {
   var content = _pug2.default.renderFile(_path2.default.join(__dirname, './template.pug'), {
-    patterns: Object.keys(_data__2.default).length
+    patterns: _data__2.default
   });
 
   _fs2.default.writeFile(htmlFile, content, function (err) {

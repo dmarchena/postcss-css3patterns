@@ -12,16 +12,37 @@ html
         flex-wrap: wrap;
       }
       li { 
-        display: inline-block; 
+        display: block; 
+        position: relative;
         list-style: none;
-        font-size: 75px; 
+        font-size: 128px; 
         width: 3em; 
         height: 3em;
-        margin: 0 1em 1em 0;
+        margin: 0 .5em .5em 0;
+      }
+      li::before,
+      li::after {
+        display: block;
+        position: absolute;
+        padding: 0 .8em;
+        right: 0; left: 0;
+        background: rgba(0, 0, 0, .8);
+        color: #fff;
+        font-size: 1.1rem;
+        line-height: 2;
+      }
+      li::before {
+        content: attr(data-name);
+        top: 0;
+        font-size: 1.3rem;
+      }
+      li::after {
+        content: 'by 'attr(data-author);
+        bottom: 0;
+        text-align: right;
       }
   body
-    h1 Patterns
+    h1 Patterns: Visual testing
     ul
-      - var n = 0;
-      while n < patterns
-        li(class='pattern-' + n++)
+      each pattern, index in patterns
+        li(class='pattern-' + index, data-name=pattern.name, data-author=pattern.author, data-url=pattern.url)

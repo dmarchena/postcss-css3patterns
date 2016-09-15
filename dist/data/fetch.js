@@ -23,17 +23,18 @@ var jsonFile = _path2.default.join(__dirname, './__data__.json');
 
 function parseHtml(html) {
   var $ = _cheerio2.default.load(html);
-  var patterns = {};
+  var patterns = [];
   $('#patterns > li').each(function (i, element) {
     var name = $(this).attr('title');
-    var author = $(this).data('author');
-    var authorUrl = $(this).data('author-url');
+    var author = $(this).data('author') || 'Lea Verou';
+    var authorUrl = $(this).data('author-url') === 'Lea Verou' ? 'http://lea.verou.me/' : $(this).data('author-url');
     var css = $(this).attr('style');
-    patterns[name] = {
+    patterns.push({
+      name: name,
       css: cleanStyle(css),
       author: author,
       url: authorUrl
-    };
+    });
   });
   return patterns;
 }
@@ -49,6 +50,7 @@ function cleanStyle(css) {
   cleaned = cleaned.replace(/[\s]{2,}/g, ' ');
   cleaned = cleaned.replace(/,([^\s])/g, ', $1');
   cleaned = cleaned.replace(/:([^\s])/g, ': $1');
+  cleaned = cleaned.replace(/;([^\s])/g, '; $1');
   return cleaned;
 }
 
