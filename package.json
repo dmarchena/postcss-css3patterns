@@ -41,7 +41,8 @@
     "lint": "eslint . --ignore-path .gitignore",
     "pretest": "npm run build",
     "test:html": "babel-node src/__tests__/sample/render.js --presets es2015",
-    "test": "ava src/__tests__/index.js",
+    "test:ava": "ava src/__tests__/index.js",
+    "test": "nyc npm run test:ava",
     "data": "babel-node src/data/fetch.js --presets es2015",
     "prebuild": "rimraf dist && npm run data",
     "build": "babel src --out-dir dist"
