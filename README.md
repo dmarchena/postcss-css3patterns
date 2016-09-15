@@ -1,4 +1,4 @@
-# postcss-css3patterns [![Build Status][ci-img]][ci]
+# postcss-css3patterns [![Build Status][ci-img]][ci] [![Coverage Status][cov-img]][cov]
 
 [PostCSS] plugin to quickly apply patterns from Lea Verou's [CSS3 Patterns Gallery]
 
@@ -6,6 +6,8 @@
 [CSS3 Patterns Gallery]: http://lea.verou.me/css3patterns/
 [ci-img]:  https://travis-ci.org/dmarchena/postcss-css3patterns.svg
 [ci]:      https://travis-ci.org/dmarchena/postcss-css3patterns
+[cov-img]: https://coveralls.io/repos/github/dmarchena/postcss-css3patterns/badge.svg?branch=master
+[cov]:     https://coveralls.io/github/dmarchena/postcss-css3patterns?branch=master
 
 ```css
 .foo {

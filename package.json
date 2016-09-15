@@ -33,9 +33,11 @@
     "mkdirp": "^0.5.1",
     "nyc": "^8.3.0",
     "pug": "^2.0.0-beta6",
+    "request": "^2.74.0",
     "rimraf": "^2.5.4"
   },
   "scripts": {
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint . --ignore-path .gitignore",
     "pretest": "npm run build",
     "test:html": "babel-node src/__tests__/sample/render.js --presets es2015",
