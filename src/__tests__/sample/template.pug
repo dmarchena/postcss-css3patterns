@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    title Sample site
+    link(rel='stylesheet', href='index.css')
+    style.
+      * {
+        box-sizing: border-box;
+      }
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      li { 
+        display: inline-block; 
+        list-style: none;
+        font-size: 75px; 
+        width: 3em; 
+        height: 3em;
+        margin: 0 1em 1em 0;
+      }
+  body
+    h1 Patterns
+    ul
+      - var n = 0;
+      while n < patterns
+        li(class='pattern-' + n++)
