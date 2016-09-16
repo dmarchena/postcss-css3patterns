@@ -1,6 +1,6 @@
 {
   "name": "postcss-css3patterns",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "PostCSS plugin to quickly apply patterns from Lea Verou's CSS3 Patterns Gallery",
   "keywords": [
     "postcss",
