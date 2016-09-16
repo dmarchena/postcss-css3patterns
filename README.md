@@ -23,10 +23,16 @@
 }
 ```
 
+## Installation
+
+```
+$ npm i postcss-css3patterns
+```
+
 ## Usage
 
 ```js
-postcss([ require('postcss-css3patterns') ])
+postcss([ require('postcss-css3patterns') ]);
 ```
 
 See [PostCSS] docs for examples for your environment.
